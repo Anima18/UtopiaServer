@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SearchAndGive"
+  id="myeclipse.1332981753340"
+  context-root="/SearchAndGive"
+  j2ee-spec="5.0"
+  archive="SearchAndGive.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
