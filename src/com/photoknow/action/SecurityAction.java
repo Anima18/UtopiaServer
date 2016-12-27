@@ -1,16 +1,9 @@
 package com.photoknow.action;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.context.annotation.Scope;
@@ -18,10 +11,8 @@ import org.springframework.stereotype.Controller;
 
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
-import com.photoknow.entity.DataObject;
 import com.photoknow.entity.User;
 import com.photoknow.entity.UserData;
-import com.photoknow.entity.UserInfo;
 import com.photoknow.service.UserService;
 import com.photoknow.util.JsonUtil;
 
@@ -33,6 +24,13 @@ public class SecurityAction extends ActionSupport implements ServletRequestAware
 	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+	
+	public void register() {
+		String userStr = request.getParameter("user");
+		Gson gson = new Gson();
+		User user = gson.fromJson(userStr, User.class);
+		
+	}
 	
 	
 	public void login(){

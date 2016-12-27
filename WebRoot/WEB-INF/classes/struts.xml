@@ -19,10 +19,10 @@
     <constant name="struts.multipart.maxSize" value="100000000" />
 
     
-	<package name="userInfo" namespace="/userInfo" extends="struts-default" >
+<!-- 	<package name="userInfo" namespace="/userInfo" extends="struts-default" >
 	    <action name="*" class="userInfoAction" method="{1}">
 	    </action>
-	</package>
+	</package> -->
 	
 	<package name="security" namespace="/security" extends="struts-default" >
 	    <action name="security_*" class="securityAction" method="{1}">
