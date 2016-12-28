@@ -21,9 +21,9 @@ public class Idea implements Serializable {
     private String name;
 	@Column(length=1000)
     private String description;
-    
+	@Column
     private Integer userId;
-   
+	@Column
     private Integer thingClassesId;
     @Column(length=40)
     private String remindTime;

@@ -20,7 +20,7 @@ public class Role implements Serializable {
 	
 	@Column(length=500)
 	private String description;
-
+	@Column
 	private Integer userId;
 
 	@Column(length=40)

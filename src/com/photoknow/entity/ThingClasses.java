@@ -17,6 +17,7 @@ public class ThingClasses implements Serializable{
 	private String name;
 	@Column(length=500)
 	private String description;
+	@Column
 	private Integer userId;
 	@Column(length=40)
 	private String createBy;

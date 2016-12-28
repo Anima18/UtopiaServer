@@ -5,6 +5,7 @@ import com.photoknow.entity.UserData;
 
 public interface UserService {
 
-	public User login(User user);
+	public boolean register(User user) throws Exception;
+	public boolean login(User user);
 	public void saveUserData(UserData userData) throws Exception;
 }

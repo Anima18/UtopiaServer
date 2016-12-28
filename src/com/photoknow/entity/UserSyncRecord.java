@@ -1,10 +1,22 @@
 package com.photoknow.entity;
 
-public class UserSyncRecord {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="user_sync_record")
+public class UserSyncRecord {
+	@Id
+	@GeneratedValue
 	private Integer id;
+	@Column
 	private Integer userId;
+	@Column(length=100)
 	private String deviceId;
+	@Column(length=40)
 	private String syncDate;
 	public Integer getId() {
 		return id;

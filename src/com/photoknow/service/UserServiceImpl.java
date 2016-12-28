@@ -1,6 +1,7 @@
 package com.photoknow.service;
 
 import javax.annotation.Resource;
+import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +17,27 @@ public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 
 	@Override
-	public User login(User user) {
-		// TODO Auto-generated method stub
-		return userDao.login(user);
+	public boolean register(User user) throws Exception{
+		User dbUser = userDao.findUserByEmail(user.getEmail());
+		if(dbUser == null) {
+			userDao.saveUser(dbUser);
+			/*UserDevice userDevice = new UserDevice(dbUser.getUserId(), user.getDeviceId(), DateUtil.toFormatString(new Date(), "yyyy-MM-dd HH:mm:ss"));
+			userDao.saveUserDevice(userDevice);*/
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean login(User user) {
+		try {
+			userDao.login(user);
+			return true;
+		} catch(NoResultException e) {
+			return false;
+		}
+		
 	}
 
 	@Override

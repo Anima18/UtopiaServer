@@ -12,7 +12,9 @@ import javax.persistence.Table;
 @Table(name="user")
 @NamedQueries({
 	@NamedQuery(name="User.getUserByEmail",
-			query="select u from User u where u.email = :email")
+			query="select u from User u where u.email = :email"),
+	@NamedQuery(name="User.login",
+			query="select u from User u where u.name = :name and u.password = :password")
 })
 public class User {
 	@Id
@@ -36,6 +38,8 @@ public class User {
 	private String gender;
 	@Column(length=100)
 	private String introduce;
+	
+	private String deviceId;
 
 	public Integer getUserId() {
 		return userId;
@@ -116,4 +120,13 @@ public class User {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+
+	public String getDeviceId() {
+		return deviceId;
+	}
+
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
+	}
+	
 }

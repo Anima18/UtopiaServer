@@ -13,7 +13,7 @@ public class Plan implements Serializable {
 	@Id
 	@GeneratedValue
     private Integer id;
-	
+	@Column
 	private Integer roleId;
 	@Column(length=40)
 	private String name;
@@ -21,7 +21,9 @@ public class Plan implements Serializable {
 	private String description;
 	@Column(length=40)
 	private String progress;
+	@Column
 	private Integer userId;
+	@Column
 	private Integer thingClassesId;
 	@Column(length=40)
 	private String thingQuadrant;

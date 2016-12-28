@@ -15,6 +15,7 @@ import com.photoknow.entity.Thing;
 import com.photoknow.entity.ThingClasses;
 import com.photoknow.entity.User;
 import com.photoknow.entity.UserData;
+import com.photoknow.entity.UserDevice;
 
 @Repository("userDao")
 public class UserDaoImpl implements UserDao{
@@ -22,15 +23,50 @@ public class UserDaoImpl implements UserDao{
 	protected EntityManager em;
 
 	@Override
-	public User login(User user) {
-		// TODO Auto-generated method stub	
+	public User login(User user) throws NoResultException {
 		try{ 
-			/*return (User)em.createNamedQuery("User.login").setParameter("number", "")
-					.setParameter("password", user.getPassword()).getSingleResult(); */
-		
-			return null;
+			return (User)em.createNamedQuery("User.login").setParameter("name", user.getName())
+					.setParameter("password", user.getPassword()).getSingleResult(); 
 		}catch(NoResultException ex){ 
-			return null; 
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+
+	@Override
+	public User findUserByEmail(String email) throws Exception {
+		try {
+			List<User> userList = (List<User>)em.createNamedQuery("User.getUserByEmail").setParameter("email", email).getResultList();
+			if(userList != null && userList.size() != 0) {
+				return userList.get(0);
+			}else {
+				return null;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void saveUser(User user) throws Exception {
+		try {
+			user.setUserId(null);
+			em.persist(user);
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
+
+	@Override
+	public void saveUserDevice(UserDevice userDevice) throws Exception {
+		try {
+			em.persist(userDevice);
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
 		}
 	}
 

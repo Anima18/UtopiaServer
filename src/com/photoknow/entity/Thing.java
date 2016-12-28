@@ -32,8 +32,11 @@ public class Thing implements Serializable {
 	private Integer classessId;
 	@Column(length=40)
 	private String thingQuadrant;
+	@Column
 	private Integer planId;
+	@Column
 	private Integer roleId;
+	@Column
 	private Integer userId;
 	@Column(length=40)
 	private String progress;
