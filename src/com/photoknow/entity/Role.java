@@ -13,15 +13,14 @@ import javax.persistence.Table;
 @Table(name="role")
 public class Role implements Serializable {
 	@Id
-	@GeneratedValue
-	private Integer id;
+	private String id;
 	@Column(length=40)
 	private String name;
 	
 	@Column(length=500)
 	private String description;
 	@Column
-	private Integer userId;
+	private String userId;
 
 	@Column(length=40)
 	private String createBy;
@@ -35,12 +34,11 @@ public class Role implements Serializable {
 	@Column(length=40)
 	private String updateAt;
 
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -60,11 +58,11 @@ public class Role implements Serializable {
 		this.description = description;
 	}
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -99,5 +97,6 @@ public class Role implements Serializable {
 	public void setUpdateAt(String updateAt) {
 		this.updateAt = updateAt;
 	}
+
 
 }

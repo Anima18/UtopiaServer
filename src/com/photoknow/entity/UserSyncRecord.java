@@ -13,7 +13,7 @@ public class UserSyncRecord {
 	@GeneratedValue
 	private Integer id;
 	@Column
-	private Integer userId;
+	private String userId;
 	@Column(length=100)
 	private String deviceId;
 	@Column(length=40)
@@ -24,10 +24,11 @@ public class UserSyncRecord {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getUserId() {
+	
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getDeviceId() {

@@ -11,10 +11,9 @@ import javax.persistence.Table;
 @Table(name="plan")
 public class Plan implements Serializable {
 	@Id
-	@GeneratedValue
-    private Integer id;
+    private String id;
 	@Column
-	private Integer roleId;
+	private String roleId;
 	@Column(length=40)
 	private String name;
 	@Column(length=1000)
@@ -22,9 +21,9 @@ public class Plan implements Serializable {
 	@Column(length=40)
 	private String progress;
 	@Column
-	private Integer userId;
+	private String userId;
 	@Column
-	private Integer thingClassesId;
+	private String thingClassesId;
 	@Column(length=40)
 	private String thingQuadrant;
 	@Column(length=40)
@@ -41,16 +40,16 @@ public class Plan implements Serializable {
 	private String updateAt;
 	@Column(length=40)
 	private String status;
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getRoleId() {
+	public String getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 	public String getName() {
@@ -71,16 +70,16 @@ public class Plan implements Serializable {
 	public void setProgress(String progress) {
 		this.progress = progress;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Integer getThingClassesId() {
+	public String getThingClassesId() {
 		return thingClassesId;
 	}
-	public void setThingClassesId(Integer thingClassesId) {
+	public void setThingClassesId(String thingClassesId) {
 		this.thingClassesId = thingClassesId;
 	}
 	public String getThingQuadrant() {
@@ -131,5 +130,6 @@ public class Plan implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 
 }

@@ -12,8 +12,7 @@ import javax.persistence.Table;
 @Table(name="thing")
 public class Thing implements Serializable {
 	@Id
-	@GeneratedValue
-    private Integer id;
+    private String id;
 	@Column(length=100)
 	private String title;
 	@Column(length=1000)
@@ -33,11 +32,11 @@ public class Thing implements Serializable {
 	@Column(length=40)
 	private String thingQuadrant;
 	@Column
-	private Integer planId;
+	private String planId;
 	@Column
-	private Integer roleId;
+	private String roleId;
 	@Column
-	private Integer userId;
+	private String userId;
 	@Column(length=40)
 	private String progress;
 	@Column(length=40)
@@ -58,10 +57,10 @@ public class Thing implements Serializable {
 	private Integer holdOnDay;
 	@Column(length=40)
 	private String habitStatus;
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -124,22 +123,22 @@ public class Thing implements Serializable {
 	public void setThingQuadrant(String thingQuadrant) {
 		this.thingQuadrant = thingQuadrant;
 	}
-	public Integer getPlanId() {
+	public String getPlanId() {
 		return planId;
 	}
-	public void setPlanId(Integer planId) {
+	public void setPlanId(String planId) {
 		this.planId = planId;
 	}
-	public Integer getRoleId() {
+	public String getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getProgress() {
@@ -202,5 +201,6 @@ public class Thing implements Serializable {
 	public void setHabitStatus(String habitStatus) {
 		this.habitStatus = habitStatus;
 	}
+	
 
 }

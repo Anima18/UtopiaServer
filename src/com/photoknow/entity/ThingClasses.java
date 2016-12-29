@@ -11,14 +11,13 @@ import javax.persistence.Table;
 @Table(name="thing_class")
 public class ThingClasses implements Serializable{
 	@Id
-	@GeneratedValue
-    private Integer id;
+    private String id;
 	@Column(length=40)
 	private String name;
 	@Column(length=500)
 	private String description;
 	@Column
-	private Integer userId;
+	private String userId;
 	@Column(length=40)
 	private String createBy;
 	@Column(length=40)
@@ -27,10 +26,10 @@ public class ThingClasses implements Serializable{
 	private String updateBy;
 	@Column(length=40)
 	private String updateAt;
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -45,10 +44,10 @@ public class ThingClasses implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getCreateBy() {
@@ -75,5 +74,6 @@ public class ThingClasses implements Serializable{
 	public void setUpdateAt(String updateAt) {
 		this.updateAt = updateAt;
 	}
+	
 
 }

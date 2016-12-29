@@ -10,10 +10,9 @@ import javax.persistence.Table;
 @Table(name="user_device")
 public class UserDevice {
 	@Id
-	@GeneratedValue
 	private Integer id;
 	@Column
-	private Integer userId;
+	private String userId;
 	@Column(length=100)
 	private String deviceId;
 	@Column(length=40)
@@ -21,7 +20,7 @@ public class UserDevice {
 	
 	public UserDevice() {}
 	
-	public UserDevice(Integer userId, String deviceId, String createDate) {
+	public UserDevice(String userId, String deviceId, String createDate) {
 		this.userId = userId;
 		this.deviceId = deviceId;
 		this.createDate = createDate;
@@ -33,12 +32,15 @@ public class UserDevice {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getUserId() {
+	
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 	public String getDeviceId() {
 		return deviceId;
 	}

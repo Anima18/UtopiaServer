@@ -2,11 +2,11 @@ package com.photoknow.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="user")
@@ -18,8 +18,7 @@ import javax.persistence.Table;
 })
 public class User {
 	@Id
-	@GeneratedValue
-	private Integer userId;
+	private String userId;
 	@Column(length=40)
 	private String name;
 	@Column(length=40)
@@ -38,14 +37,14 @@ public class User {
 	private String gender;
 	@Column(length=100)
 	private String introduce;
-	
+	@Transient
 	private String deviceId;
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

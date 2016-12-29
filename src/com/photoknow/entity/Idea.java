@@ -15,16 +15,15 @@ import javax.persistence.Table;
 @Table(name="idea")
 public class Idea implements Serializable {
 	@Id
-	@GeneratedValue
-    private Integer id;
+    private String id;
 	@Column(length=40)
     private String name;
 	@Column(length=1000)
     private String description;
 	@Column
-    private Integer userId;
+    private String userId;
 	@Column
-    private Integer thingClassesId;
+    private String thingClassesId;
     @Column(length=40)
     private String remindTime;
     @Column(length=40)
@@ -37,11 +36,10 @@ public class Idea implements Serializable {
     private String updateBy;
     @Column(length=40)
     private String updateAt;
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -56,16 +54,16 @@ public class Idea implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Integer getThingClassesId() {
+	public String getThingClassesId() {
 		return thingClassesId;
 	}
-	public void setThingClassesId(Integer thingClassesId) {
+	public void setThingClassesId(String thingClassesId) {
 		this.thingClassesId = thingClassesId;
 	}
 	public String getRemindTime() {
@@ -104,5 +102,7 @@ public class Idea implements Serializable {
 	public void setUpdateAt(String updateAt) {
 		this.updateAt = updateAt;
 	}
+
+	
 
 }
