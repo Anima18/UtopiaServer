@@ -6,11 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="role")
+@NamedQueries({
+	@NamedQuery(name="Role.getRoleByUserId",
+			query="select i from Role i where i.userId = :userId")
+})
 public class Role implements Serializable {
 	@Id
 	private String id;

@@ -5,10 +5,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="thing_class")
+@NamedQueries({
+	@NamedQuery(name="ThingClasses.getThingClassesByUserId",
+			query="select i from ThingClasses i where i.userId = :userId")
+})
 public class ThingClasses implements Serializable{
 	@Id
     private String id;

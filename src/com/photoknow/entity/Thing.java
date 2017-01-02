@@ -6,10 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="thing")
+@NamedQueries({
+	@NamedQuery(name="Thing.getThingByUserId",
+			query="select i from Thing i where i.userId = :userId")
+})
 public class Thing implements Serializable {
 	@Id
     private String id;
@@ -28,7 +34,7 @@ public class Thing implements Serializable {
 	@Column(length=40)
 	private String endTime;
 	private boolean isPrompting;
-	private Integer classessId;
+	private String classessId;
 	@Column(length=40)
 	private String thingQuadrant;
 	@Column
@@ -111,10 +117,11 @@ public class Thing implements Serializable {
 	public void setPrompting(boolean isPrompting) {
 		this.isPrompting = isPrompting;
 	}
-	public Integer getClassessId() {
+	
+	public String getClassessId() {
 		return classessId;
 	}
-	public void setClassessId(Integer classessId) {
+	public void setClassessId(String classessId) {
 		this.classessId = classessId;
 	}
 	public String getThingQuadrant() {

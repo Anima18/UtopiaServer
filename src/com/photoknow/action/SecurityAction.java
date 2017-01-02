@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.photoknow.entity.ResultData;
 import com.photoknow.entity.User;
 import com.photoknow.entity.UserData;
+import com.photoknow.entity.UserSyncRecord;
 import com.photoknow.service.UserService;
 import com.photoknow.util.JsonUtil;
 
@@ -75,17 +76,53 @@ public class SecurityAction extends ActionSupport implements ServletRequestAware
 		}
 	}
 	
-	
-	public void syncData(){
-		String userDataStr = request.getParameter("userData");
+	public void checkDataVersion() {
 		Gson gson = new Gson();
-		UserData userData = gson.fromJson(userDataStr, UserData.class);
+		String userId = request.getParameter("userId");
+		String deviceId = request.getParameter("deviceId");
+		String lastSyncTime = request.getParameter("lastSyncTime");
+		UserSyncRecord record = new UserSyncRecord(userId, deviceId, lastSyncTime);
+		
 		try {
-			userService.saveUserData(userData);
-			JsonUtil.print(response, "success");
+			boolean flag = userService.findSyncRecord(record);
+			ResultData result = new ResultData();
+			if(flag) {
+				result.setCode(1);
+				result.setInfo("数据是最新的");
+				//return version is new
+			}else {
+				//get data of sync to local
+				UserData userData = userService.getUserData(userId);
+				result.setCode(0);
+				result.setInfo("数据有更新");
+				result.setUserData(userData);
+			}
+			JsonUtil.print(response, gson.toJson(result));
 		} catch (Exception e) {
 			e.printStackTrace();
-			JsonUtil.print(response, "fail");
+		}
+		
+		
+	}
+	
+	public void syncData(){
+		Gson gson = new Gson();
+		ResultData result = new ResultData();
+		try {
+			String userDataStr = request.getParameter("userData");
+			UserData userData = gson.fromJson(userDataStr, UserData.class);
+			
+			userService.saveUserData(userData);
+			userService.saveSyncRecord(userData.getRecord());
+			
+			result.setCode(1);
+			result.setInfo("同步成功！");
+			JsonUtil.print(response, gson.toJson(result));
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setCode(0);
+			result.setInfo("同步失败！");
+			JsonUtil.print(response, gson.toJson(result));
 		}
 		
 	}

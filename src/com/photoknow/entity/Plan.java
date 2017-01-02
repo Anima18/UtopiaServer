@@ -5,10 +5,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="plan")
+@NamedQueries({
+	@NamedQuery(name="Plan.getPlanByUserId",
+			query="select i from Plan i where i.userId = :userId")
+})
 public class Plan implements Serializable {
 	@Id
     private String id;

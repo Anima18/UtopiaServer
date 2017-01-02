@@ -13,6 +13,8 @@ import javax.persistence.Transient;
 @NamedQueries({
 	@NamedQuery(name="User.getUserByEmail",
 			query="select u from User u where u.email = :email"),
+	@NamedQuery(name="User.getUserById",
+			query="select u from User u where u.userId = :userId"),
 	@NamedQuery(name="User.login",
 			query="select u from User u where u.name = :name and u.password = :password")
 })

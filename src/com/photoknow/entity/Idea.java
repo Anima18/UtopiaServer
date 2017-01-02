@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -13,6 +15,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="idea")
+@NamedQueries({
+	@NamedQuery(name="Idea.getIdeaByUserId",
+			query="select i from Idea i where i.userId = :userId")
+})
 public class Idea implements Serializable {
 	@Id
     private String id;
