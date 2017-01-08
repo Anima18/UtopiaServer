@@ -53,27 +53,16 @@ public class SecurityAction extends ActionSupport implements ServletRequestAware
 	}
 	
 	public void login() {
-		ResultData result = new ResultData();
 		Gson gson = new Gson();
 		try {
 			String userStr = request.getParameter("user");
 			User user = gson.fromJson(userStr, User.class);
-			boolean flag = userService.login(user);
+			User dbUser = userService.login(user);
 		
-			if(flag) {
-				result.setCode(1);
-				result.setInfo("登录成功");
-			}else {
-				result.setCode(0);
-				result.setInfo("用户名或密码出错");
-			}
+			JsonUtil.print(response, gson.toJson(dbUser));
 		} catch(Exception e) {
 			e.printStackTrace();
-			result.setCode(0);
-			result.setInfo(e.getMessage());
-		} finally {
-			JsonUtil.print(response, gson.toJson(result));
-		}
+		} 
 	}
 	
 	public void checkDataVersion() {

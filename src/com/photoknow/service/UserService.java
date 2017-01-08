@@ -7,7 +7,7 @@ import com.photoknow.entity.UserSyncRecord;
 public interface UserService {
 
 	public boolean register(User user) throws Exception;
-	public boolean login(User user);
+	public User login(User user);
 	public void saveUserData(UserData userData) throws Exception;
 	public boolean findSyncRecord(UserSyncRecord record) throws Exception;
 	public void saveSyncRecord(UserSyncRecord record) throws Exception;

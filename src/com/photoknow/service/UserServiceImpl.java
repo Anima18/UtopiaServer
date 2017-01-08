@@ -38,12 +38,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean login(User user) {
+	public User login(User user) {
 		try {
-			userDao.login(user);
-			return true;
+			return userDao.login(user);
 		} catch(NoResultException e) {
-			return false;
+			return null;
 		}
 		
 	}
